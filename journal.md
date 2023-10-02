@@ -1,2 +1,2 @@
-# Journal de Weiqi ZHANG
+# Journal de bord du projet encadré
 
