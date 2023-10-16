@@ -1,0 +1,35 @@
+# Exercice dans 00-Shell.pdf
+
+# p. 24
+
+# Compter le nombre d’annotations par année (2016, 2017 et 2018):
+
+cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/Fichiers/ann 
+cat ./2016/* | wc -l
+cat ./2017/* | wc -l
+cat ./2018/* | wc -l
+
+# limiter ce comptage aux lieux (Location):
+
+cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/Fichiers/ann 
+cat ./2016/* | grep Location | wc -l
+cat ./2017/* | grep Location | wc -l
+cat ./2018/* | grep Location | wc -l
+
+# sauvegarder ces résultats dans un (seul) fichier :
+
+cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/Fichiers/ann 
+cat ./2016/* | wc -l > reponses.txt
+cat ./2017/* | wc -l >> reponses.txt
+cat ./2018/* | wc -l >> reponses.txt
+cat ./2016/* | grep Location | wc -l >> reponses.txt
+cat ./2017/* | grep Location | wc -l >> reponses.txt
+cat ./2018/* | grep Location | wc -l >> reponses.txt
+
+# établir le classement des lieux les plus cités.
+
+cat ./*/* | grep Location | cut -f 3 | sort | uniq -c | sort -n
+
+# trouver les annotations les plus fréquentes pour votre mois de naissance, toutes années confondues.
+
+cat ./*/* | grep "\bmars\b" | sort | uniq -c |sort -n
