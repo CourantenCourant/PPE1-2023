@@ -1,0 +1,2 @@
+cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/Fichiers/ann 
+cat ./*/* | grep Location | cut -f 3 | sort | uniq -c | sort -n
