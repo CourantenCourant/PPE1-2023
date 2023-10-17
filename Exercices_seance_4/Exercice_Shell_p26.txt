@@ -3,6 +3,6 @@
 #!/usr/bin/bash
 
 cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/Fichiers/ann 
-grep Location ./2016/2016* | wc
-grep Location ./2017/2017* | wc
-grep Location ./2018/2018* | wc
+grep Location ./2016/2016* | wc -l
+grep Location ./2017/2017* | wc -l
+grep Location ./2018/2018* | wc -l
