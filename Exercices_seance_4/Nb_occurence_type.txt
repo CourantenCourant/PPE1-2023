@@ -1,0 +1,5 @@
+Annee=$1
+Type=$2
+cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/Fichiers/ann
+Nb_occurence_type=$(cat ./$Annee/* | grep $Type | wc -l)
+echo "Nombre d'annotations de type $Type pour l'année $Annee : $Nb_occurence_type"
