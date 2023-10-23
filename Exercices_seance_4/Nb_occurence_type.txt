@@ -1,5 +1,18 @@
 Annee=$1
 Type=$2
-cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/Fichiers/ann
-Nb_occurence_type=$(cat ./$Annee/* | grep $Type | wc -l)
-echo "Nombre d'annotations de type $Type pour l'année $Annee : $Nb_occurence_type"
+
+if [ -z "$1" ]; then
+	echo "Veuillez entrer l'année que vous voulez chercher"
+	exit
+	
+elif [ -z "$2" ]; then
+	echo "Veuillez entrer le type que vous voulez chercher"
+	exit
+	
+elif [[ $1 =~ 201[678] ]]; then
+	cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/Fichiers/ann
+	Nb_occurence_type=$(cat ./$Annee/* | grep $Type | wc -l)
+	echo "Nombre d'annotations de type $Type pour l'année $Annee : $Nb_occurence_type"
+else
+	echo "Il faut que l'année soit entre 2016 et 2018."
+fi
