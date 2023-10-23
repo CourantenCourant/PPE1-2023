@@ -1,6 +1,16 @@
-Type_entite=$1
-cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/PPE1-2023/Exercices_seance_4
-chmod +x Nb_occurence_type.txt
-./Nb_occurence_type.txt 2016 $Type_entite
-./Nb_occurence_type.txt 2017 $Type_entite
-./Nb_occurence_type.txt 2018 $Type_entite
+type_entite=$1
+
+if [ -z "$type_entite" ]; then
+	echo "Veuillez préciser le type d'entité."
+	exit
+
+else
+
+	cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/PPE1-2023/Exercices_seance_4
+	chmod +x Nb_occurence_type.txt
+	
+	for ANNEE in 2016 2017 2018
+	do
+		./Nb_occurence_type.txt $ANNEE $type_entite
+	done
+fi
