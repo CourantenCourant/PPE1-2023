@@ -1,3 +1,5 @@
+#!/bin/bash
+
 type_entite=$1
 
 if [ -z "$type_entite" ]; then
@@ -6,7 +8,6 @@ if [ -z "$type_entite" ]; then
 
 else
 
-	cd /Users/arthurzhang/Cours_de_TAL/Projet_encadre/PPE1-2023/Exercices_seance_4
 	chmod +x Nb_occurence_type.txt
 	
 	for ANNEE in 2016 2017 2018
