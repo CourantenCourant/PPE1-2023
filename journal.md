@@ -39,3 +39,8 @@ curl -s https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal | grep -E
 Avec ces codes, je prends n'importe quel string contenu entre les doubles guillemets. Mais cela
 n'évite pas le principe de gourmandise et pourrait prendre un string bcp plus long. J'aimerais
 donc bien savoir pourquoi [^"] ne fonctionne pas et comment résoudre le problem.
+
+# 12/11/2023
+
+Pas trop à noter cette semaine. J'ai fini tous les exercices, même s'ils peuvent être difficiles
+parce que les shells scripts deviennent un peu longs et difficile à debug.

@@ -3,19 +3,35 @@
 chemin_fichier=$1
 count=1
 
-#break if directory of file is not given
+#Give a default file if chemin_fichier not specified
 if [ -z "$1" ]; then
-  echo "Veuillez donner le chemin du fichier à lire."
-  exit 1
+  chemin_fichier="../urls/fr.txt"
 fi
 
-#read file line by line; output order number, website URL, HTTP response code and encoding
+#Read file line by line; output order number, website URL, HTTP response code and encoding
 while read -r line;
 do
-	#fetch encoding of websites
+	#Fetch encoding of websites
 	web_encodage=$(curl -s "$line" | grep -Eo 'charset=".*"' | cut -d'"' -f2)
-	#fetch HTTP response code from websites
+	#Fetch HTTP response code from websites
 	web_response=$(curl -Ils "$line" | grep "HTTP/" | grep -Eo "[0-9]{3}")
-	echo -e "$count\t${line}\t$web_response\t$web_encodage"
+	echo -e "$count\t${line}\t$web_response\t$web_encodage" >> temp.txt
 	count=$((count+1))
 done < "$chemin_fichier"
+
+#Give HTML head, create HTML file
+echo -e "<table>\n\t<tr><th>Numéro</th><th>Site</th><th>Réponse_HTTP</th><th>Encodage</th></tr>" > miniprojet.html
+
+#Read temp.txt line by line, convert each line to a HTML body line
+while read -r line;
+do
+#Convert each line to HTML format
+mod_line=$(echo -e "$line" | sed 's/\t/<\/td><td>/g')
+echo -e "\t<tr>\n\t\t<td>${mod_line}</td>\n\t</tr>" >> miniprojet.html
+done < temp.txt
+
+#Give HTML end
+echo "</table>" >> miniprojet.html
+
+#Remove temporary files
+rm temp.txt
