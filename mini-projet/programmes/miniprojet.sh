@@ -20,18 +20,33 @@ do
 done < "$chemin_fichier"
 
 #Give HTML head, create HTML file
-echo -e "<table>\n\t<tr><th>Numéro</th><th>Site</th><th>Réponse_HTTP</th><th>Encodage</th></tr>" > miniprojet.html
+echo -e "
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Mini-projet</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	</head>
+	<table>
+		<tr><th>Numéro</th><th>Site</th><th>Réponse_HTTP</th><th>Encodage</th></tr> 
+	<body>" > miniprojet.html
 
 #Read temp.txt line by line, convert each line to a HTML body line
 while read -r line;
 do
 #Convert each line to HTML body
 mod_line=$(echo -e "$line" | sed 's/\t/<\/td><td>/g')
-echo -e "\t<tr>\n\t\t<td>${mod_line}</td>\n\t</tr>" >> miniprojet.html
+echo -e "
+		<tr>
+			<td>${mod_line}</td>
+		</tr>" >> miniprojet.html
 done < temp.txt
 
 #Give HTML end
-echo "</table>" >> miniprojet.html
+echo "
+	</body>
+	</table>
+</html>" >> miniprojet.html
 
 #Remove temporary files
 rm temp.txt
