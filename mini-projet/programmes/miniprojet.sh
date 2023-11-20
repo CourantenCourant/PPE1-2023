@@ -5,7 +5,7 @@ count=1
 
 #Give a default file if chemin_fichier not specified
 if [ -z "$1" ]; then
-  chemin_fichier="../urls/fr.txt"
+	chemin_fichier="../urls/fr.txt"
 fi
 
 #Read file line by line; output order number, website URL, HTTP response code and encoding
@@ -25,7 +25,7 @@ echo -e "<table>\n\t<tr><th>Numéro</th><th>Site</th><th>Réponse_HTTP</th><th>E
 #Read temp.txt line by line, convert each line to a HTML body line
 while read -r line;
 do
-#Convert each line to HTML format
+#Convert each line to HTML body
 mod_line=$(echo -e "$line" | sed 's/\t/<\/td><td>/g')
 echo -e "\t<tr>\n\t\t<td>${mod_line}</td>\n\t</tr>" >> miniprojet.html
 done < temp.txt
@@ -35,3 +35,20 @@ echo "</table>" >> miniprojet.html
 
 #Remove temporary files
 rm temp.txt
+
+: <<'END'
+On peut écrire :
+echo "<html>
+	<head>
+		<meta charset=\"UTF-8\">
+	</head>
+	<body>"
+\" pour déspécialiser
+
+echo "		<table>
+			<tr><th>ligne</th><th>URL</th><th>code HTTP</th><th>encodage</th></tr>"
+
+echo "		<table>
+
+
+END

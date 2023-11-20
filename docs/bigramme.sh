@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #Create a file with one word per line.
-cat candide.txt | tr '[:upper:]' '[:lower:]' | tr '[:punct:]' ' ' | tr '\n' ' ' | tr -s ' ' | tr ' ' '\n' > word_per_line.txt
+cat candide.txt | ggrep -P -o '\w+' | tr '[:upper:]' '[:lower:]' > word_per_line.txt
 
 #Create a bigramme file.
 echo ' ' > temp1.txt
@@ -13,12 +13,12 @@ nombre_mot=$1
 #Count bigrammes.
 cat bigramme.txt | sort | uniq -c | sort -rn > sorted_bigramme.txt
 
-#Set nombre_mot to 25 if value not given.
+#Set $nombre_mot to 25 if value not given.
 if [ -z "$nombre_mot" ]; then
     nombre_mot=25
 fi 
 
-#Show nombre_mot number of most frequent bigrammes.
+#Show $nombre_mot number of most frequent bigrammes.
 head -n "$nombre_mot" sorted_bigramme.txt
 
 #Remove all temporary files.
